@@ -10,7 +10,7 @@ Aplicación desarrollada en **Angular 20** usando **standalone components**, **s
 3. Genera tus variables de entorno:
 MAPBOX_TOKEN=pk.xxxxxx
 4. Ejecutar el comando de creacion de variables de entorno:
- ```npm run set-env.js```
+```npm run set-env.js```
 5. Ejecuta el pryecto:
 ```pnpm start```
 
@@ -18,20 +18,20 @@ MAPBOX_TOKEN=pk.xxxxxx
 
 src/
 ├── app/
-│   ├── pages/               # Vistas principales (fullscreen, markers, houses)
+│   ├── pages/               
 │   ├── shared/
-│   │   └── components/      # Componentes reutilizables como navbar y mini-map
-│   ├── app.routes.ts        # Rutas con título dinámico
-│   ├── app.config.ts        # Providers (router, zone detection...)
-│   └── app.ts               # Componente raíz standalone
-├── environments/            # Claves de entorno (mapboxToken, etc.)
-└── main.ts                  # Punto de entrada principal
+│   │   └── components/    
+│   ├── app.routes.ts       
+│   ├── app.config.ts        
+│   └── app.ts              
+├── environments/           
+└── main.ts                 
 
 scripts/
-└── set-env.js               # Genera `environment.prod.ts` en tiempo de build
+└── set-env.js               
 
 public/
-└── _redirects               # Redirección para SPA en Netlify
+└── _redirects             
 
 
 ##  Comandos útiles
