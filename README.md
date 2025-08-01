@@ -14,7 +14,7 @@ MAPBOX_TOKEN=pk.xxxxxx
 5. Ejecuta el pryecto:
 ```pnpm start```
 
-**Estructura del proyecto**
+## 📁 Estructura del proyecto
 
 src/
 ├── app/
@@ -24,8 +24,15 @@ src/
 │   ├── app.routes.ts        # Rutas con título dinámico
 │   ├── app.config.ts        # Providers (router, zone detection...)
 │   └── app.ts               # Componente raíz standalone
-├── environments/            # Claves de entorno (mapboxKey, etc.)
+├── environments/            # Claves de entorno (mapboxToken, etc.)
 └── main.ts  
+
+scripts/
+└── set-env.js               # Genera `environment.prod.ts` en tiempo de build
+
+public/
+└── _redirects               # Redirección para SPA en Netlify
+
 
 ##  Comandos útiles
 
