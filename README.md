@@ -14,7 +14,7 @@ MAPBOX_TOKEN=pk.xxxxxx
 5. Ejecuta el pryecto:
 ```pnpm start```
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 src/
 ├── app/
@@ -25,7 +25,7 @@ src/
 │   ├── app.config.ts        # Providers (router, zone detection...)
 │   └── app.ts               # Componente raíz standalone
 ├── environments/            # Claves de entorno (mapboxToken, etc.)
-└── main.ts  
+└── main.ts                  # Punto de entrada principal
 
 scripts/
 └── set-env.js               # Genera `environment.prod.ts` en tiempo de build
