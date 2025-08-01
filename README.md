@@ -1,16 +1,16 @@
 # Maps App
 
-Aplicación moderna desarrollada en **Angular 20** usando **standalone components**, **signals**, **directivas estructurales modernas (`@for`, `@if`)**, **Tailwind CSS**, **DaisyUI** y **MapboxGL** para mostrar mapas interactivos, marcadores personalizados y puntos turísticos.
+Aplicación desarrollada en **Angular 20** usando **standalone components**, **signals**, **directivas estructurales modernas (`@for`, `@if`)**, **Tailwind CSS**, **DaisyUI** y **MapboxGL** para mostrar mapas interactivos, marcadores personalizados y puntos turísticos.
 
 **Iniciar el proyecto en 'dev'**
 
 1. Clonar el repositorio
 2. Instalar dependencias
 ```pnpm install```
-3. Genera tu propio variables de entrono:
- ```.env``` basado en el ```env.template```
+3. Genera tus variables de entorno:
+MAPBOX_TOKEN=pk.xxxxxx
 4. Ejecutar el comando de creacion de variables de entorno:
- ```npm run set-envs```
+ ```npm run set-env.js```
 5. Ejecuta el pryecto:
 ```pnpm start```
 
