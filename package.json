@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "set-envs": "node ./scripts/set-envs.js",
-     "docs": "compodoc -p tsconfig.app.json -d documentation --silent"
+    "docs": "compodoc -p tsconfig.app.json -d documentation --silent"
   },
   "prettier": {
     "overrides": [
@@ -45,6 +45,7 @@
     "@angular/compiler-cli": "^20.1.0",
     "@compodoc/compodoc": "^1.1.26",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^24.1.0",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
