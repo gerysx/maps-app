@@ -16,23 +16,18 @@ MAPBOX_TOKEN=pk.xxxxxx
 
 ##  Estructura del proyecto
 
+```text
 src/
 ├── app/
-│   ├── pages/               
-│   ├── shared/
-│   │   └── components/    
-│   ├── app.routes.ts       
-│   ├── app.config.ts        
-│   └── app.ts              
-├── environments/           
-└── main.ts                 
-
-scripts/
-└── set-env.js               
-
-public/
-└── _redirects             
-
+│ ├── pages/ # Vistas principales (fullscreen, markers, houses)
+│ ├── shared/
+│ │ └── components/ # Componentes reutilizables como navbar y mini-map
+│ ├── app.routes.ts # Rutas con título dinámico
+│ ├── app.config.ts # Providers (router, zone detection...)
+│ └── app.ts # Componente raíz standalone
+├── environments/ # Claves de entorno (mapboxToken, etc.)
+└── main.ts # Punto de entrada principal
+```
 
 ##  Comandos útiles
 
