@@ -1,0 +1,6 @@
+[build]
+  command = "pnpm run build --configuration=production"
+  publish = "dist/maps-app/browser/browser"
+
+[context.production.environment]
+  MAPBOX_KEY = "tu_clave_de_mapbox"
