@@ -27,13 +27,13 @@ src/
 ├── environments/            # Claves de entorno (mapboxKey, etc.)
 └── main.ts  
 
-**Comandos útiles**
+##  Comandos útiles
 
-
-Comando	-------------------Descripción
-```pnpm start```	Ejecuta la app en modo desarrollo (ng serve)
-```pnpm run docs```	Genera documentación con Compodoc
-```pnpm exec compodoc``` -s	Sirve la documentación en http://localhost:8080
-```pnpm run set-envs```	Inyecta variables de entorno
+| Comando                         | Descripción                                                       |
+|---------------------------------|-------------------------------------------------------------------|
+| `pnpm start`                    | Ejecuta la app en modo desarrollo (`ng serve`)                    |
+| `pnpm run docs`                 | Genera documentación con Compodoc                                 |
+| `pnpm exec compodoc -s`         | Sirve la documentación en `http://localhost:8080`                 |
+| `pnpm run set-env`              | Genera `environment.prod.ts` con las variables del archivo `.env` |
 
 **GERMÁN ALVAREZ**
