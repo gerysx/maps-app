@@ -1,43 +1,23 @@
-<div class="navbar bg-base-100 shadow-sm">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h7"
-          />
-        </svg>
-      </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-      >
-        @for (route of routes; track route.path) {
-        <li>
-          <a [routerLink]="route.path">{{ route.title }}</a>
-        </li>
-        }
-      </ul>
-    </div>
-  </div>
-  <div class="navbar-center">
+<!-- 
+  NAVBAR SUPERIOR
 
-    <a class="btn btn-ghost text-xl">{{ pageTitle$ | async }}</a>
-  </div>
-  <div class="navbar-end">
-    <button class="btn btn-ghost btn-circle">
+  Barra de navegación fija en la parte superior de la pantalla.
+  Contiene:
+    - Botón hamburguesa para abrir el menú lateral.
+    - Título centrado de la página actual (basado en `pageTitle$ | async`).
+-->
+<div class="navbar bg-base-100 shadow-sm relative z-10">
+  <div class="navbar-start">
+    <!-- Botón hamburguesa: activa el menú lateral -->
+    <button
+      class="btn btn-ghost btn-circle"
+      (click)="toggleSidebar()"
+      aria-label="Abrir menú lateral"
+    >
+      <!-- Ícono de hamburguesa (tres líneas) -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
+        class="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -46,28 +26,64 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          d="M4 6h16M4 12h16M4 18h7"
         />
       </svg>
     </button>
-    <button class="btn btn-ghost btn-circle">
-      <div class="indicator">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-          />
-        </svg>
-        <span class="badge badge-xs badge-primary indicator-item"></span>
-      </div>
-    </button>
+  </div>
+
+  <!-- Título dinámico de la página actual -->
+  <div class="navbar-center absolute left-1/2 transform -translate-x-1/2">
+    <a class="btn btn-ghost text-xl normal-case">
+      {{ pageTitle$ | async }}
+    </a>
   </div>
 </div>
+
+<!-- 
+  PANEL LATERAL
+
+  Menú deslizante lateral izquierdo que muestra las rutas de navegación.
+  Se activa al hacer clic en el botón hamburguesa.
+-->
+@if (sidebarOpen()) {
+  <div
+    class="fixed inset-y-0 left-0 w-48 sm:w-56 bg-base-200 shadow-lg z-30 transition-transform duration-300"
+  >
+    <!-- Cabecera del menú lateral -->
+    <div class="p-4 flex justify-between items-center border-b border-base-300">
+      <span class="text-lg font-semibold">Menú</span>
+      <!-- Botón de cierre del panel lateral -->
+      <button class="btn btn-sm btn-ghost" (click)="toggleSidebar()">✕</button>
+    </div>
+
+    <!-- Lista de enlaces navegables -->
+    <ul class="menu p-4 gap-2">
+      @for (route of routes; track route.path) {
+        <li>
+          <a
+            [routerLink]="route.path"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="bg-primary/20 text-primary font-semibold"
+            (click)="toggleSidebar()"
+            class="rounded px-3 py-2 transition-colors duration-200 hover:bg-primary/10 hover:text-primary"
+          >
+            {{ route.title }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <!-- 
+    DIFUMINADO SUAVE DEL FONDO
+
+    Capa translúcida con blur leve. 
+    Permite mantener visible el fondo de la aplicación mientras el menú lateral está abierto.
+    Clic sobre esta capa cierra el panel lateral.
+  -->
+  <div
+    class="fixed inset-0 z-20 bg-base-300/10 backdrop-blur-sm transition-opacity duration-100"
+    (click)="toggleSidebar()"
+  ></div>
+}

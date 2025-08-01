@@ -1,0 +1,640 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>maps-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">maps-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  TouristPlace</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/pages/houses-page/houses-page.component.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interfaz que representa un punto de interés turístico.</p>
+
+            </p>
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#continent" 
+>
+                                            continent
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#description" 
+>
+                                            description
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#id" 
+>
+                                            id
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#lngLat" 
+>
+                                            lngLat
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#name" 
+>
+                                            name
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#tags" 
+>
+                                            tags
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="continent"></a>
+                                        <span class="name "><b>continent</b>
+                                            <a href="#continent">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>continent:     <code>&quot;Europa&quot; | &quot;Asia&quot; | &quot;África&quot; | &quot;América&quot; | &quot;Oceanía&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;Europa&quot; | &quot;Asia&quot; | &quot;África&quot; | &quot;América&quot; | &quot;Oceanía&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="description"></a>
+                                        <span class="name "><b>description</b>
+                                            <a href="#description">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>description:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="lngLat"></a>
+                                        <span class="name "><b>lngLat</b>
+                                            <a href="#lngLat">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>lngLat:     <code>literal type</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>literal type</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="name"></a>
+                                        <span class="name "><b>name</b>
+                                            <a href="#name">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="tags"></a>
+                                        <span class="name "><b>tags</b>
+                                            <a href="#tags">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>tags:     <code>string[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, signal } from &#x27;@angular/core&#x27;;
+import { v4 as uuid } from &#x27;uuid&#x27;;
+import { MiniMapComponent } from &#x27;../../maps/components/mini-map/mini-map.component&#x27;;
+
+/**
+ * Interfaz que representa un punto de interés turístico.
+ * 
+ * @property id - Identificador único (UUID).
+ * @property name - Nombre del lugar turístico.
+ * @property description - Descripción breve del sitio.
+ * @property continent - Continente al que pertenece el lugar.
+ * @property lngLat - Coordenadas geográficas (longitud y latitud).
+ * @property tags - Lista de etiquetas temáticas o geográficas.
+ */
+interface TouristPlace {
+  id: string;
+  name: string;
+  description: string;
+  continent: &#x27;Europa&#x27; | &#x27;Asia&#x27; | &#x27;África&#x27; | &#x27;América&#x27; | &#x27;Oceanía&#x27;;
+  lngLat: { lng: number; lat: number };
+  tags: string[];
+}
+
+/**
+ * Componente principal de la vista de lugares turísticos.
+ *
+ * Este componente muestra una lista de puntos turísticos organizados por continente.
+ * Cada tarjeta incluye un mapa en miniatura (&#x60;MiniMapComponent&#x60;) y detalles del lugar.
+ *
+ * @example Uso del componente en rutas:
+ * {
+ *   path: &#x27;houses&#x27;,
+ *   component: HousesPageComponent,
+ *   title: &#x27;Sitios turísticos&#x27;
+ * }
+ */
+@Component({
+  selector: &#x27;app-page-component&#x27;,
+  standalone: true,
+  imports: [MiniMapComponent],
+  templateUrl: &#x27;./houses-page.component.html&#x27;,
+})
+export class HousesPageComponent {
+  /**
+   * Estado reactivo que contiene la lista de lugares turísticos.
+   * 
+   * Inicializado con una colección diversa de monumentos y sitios
+   * representativos de los cinco continentes.
+   * 
+   * Utiliza &#x60;uuid&#x60; para asignar identificadores únicos.
+   */
+  houses &#x3D; signal&lt;TouristPlace[]&gt;([
+    //  EUROPA
+    {
+      id: uuid(),
+      name: &#x27;Torre Eiffel&#x27;,
+      description: &#x27;Emblemática torre de hierro en el corazón de París.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 2.2945, lat: 48.8584 },
+      tags: [&#x27;París&#x27;, &#x27;Francia&#x27;, &#x27;Monumento&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Coliseo Romano&#x27;,
+      description: &#x27;Anfiteatro icónico de la Antigua Roma.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 12.4922, lat: 41.8902 },
+      tags: [&#x27;Italia&#x27;, &#x27;Historia&#x27;, &#x27;Roma&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Castillo de Neuschwanstein&#x27;,
+      description: &#x27;Castillo de cuento de hadas en los Alpes bávaros que inspiró a Disney.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 10.7498, lat: 47.5576 },
+      tags: [&#x27;Alemania&#x27;, &#x27;Castillo&#x27;, &#x27;Baviera&#x27;],
+    },
+
+    //  AMÉRICA
+    {
+      id: uuid(),
+      name: &#x27;Machu Picchu&#x27;,
+      description: &#x27;Ciudadela inca escondida en los Andes peruanos.&#x27;,
+      continent: &#x27;América&#x27;,
+      lngLat: { lng: -72.544963, lat: -13.163141 },
+      tags: [&#x27;Perú&#x27;, &#x27;Incas&#x27;, &#x27;Montaña&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Estatua de la Libertad&#x27;,
+      description: &#x27;Símbolo de libertad en Nueva York.&#x27;,
+      continent: &#x27;América&#x27;,
+      lngLat: { lng: -74.0445, lat: 40.6892 },
+      tags: [&#x27;EEUU&#x27;, &#x27;NYC&#x27;, &#x27;Icono&#x27;],
+    },
+
+    //  ASIA
+    {
+      id: uuid(),
+      name: &#x27;Gran Muralla China&#x27;,
+      description: &#x27;Estructura militar de miles de kilómetros.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 117.236, lat: 40.6769 },
+      tags: [&#x27;China&#x27;, &#x27;Muralla&#x27;, &#x27;Historia&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Templo de Angkor Wat&#x27;,
+      description: &#x27;Templo monumental en Camboya.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 103.866986, lat: 13.4125 },
+      tags: [&#x27;Camboya&#x27;, &#x27;Religión&#x27;, &#x27;Arquitectura&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Taj Mahal&#x27;,
+      description: &#x27;Mausoleo de mármol blanco símbolo del amor eterno, ubicado en Agra.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 78.0421, lat: 27.1751 },
+      tags: [&#x27;India&#x27;, &#x27;Patrimonio&#x27;, &#x27;Arquitectura&#x27;],
+    },
+
+    //  ÁFRICA
+    {
+      id: uuid(),
+      name: &#x27;Pirámides de Giza&#x27;,
+      description: &#x27;Maravilla del mundo antiguo en Egipto.&#x27;,
+      continent: &#x27;África&#x27;,
+      lngLat: { lng: 31.1342, lat: 29.9792 },
+      tags: [&#x27;Egipto&#x27;, &#x27;Faraones&#x27;, &#x27;Antigüedad&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Cataratas Victoria&#x27;,
+      description: &#x27;Impresionantes cataratas entre Zambia y Zimbabue.&#x27;,
+      continent: &#x27;África&#x27;,
+      lngLat: { lng: 25.8572, lat: -17.9243 },
+      tags: [&#x27;Naturaleza&#x27;, &#x27;África&#x27;, &#x27;Zambeze&#x27;],
+    },
+
+    //  OCEANÍA
+    {
+      id: uuid(),
+      name: &#x27;Ópera de Sídney&#x27;,
+      description: &#x27;Edificio icónico a orillas del puerto.&#x27;,
+      continent: &#x27;Oceanía&#x27;,
+      lngLat: { lng: 151.2153, lat: -33.8568 },
+      tags: [&#x27;Australia&#x27;, &#x27;Arquitectura&#x27;, &#x27;Sídney&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Uluru (Ayers Rock)&#x27;,
+      description: &#x27;Monolito sagrado de los aborígenes australianos en pleno desierto rojo.&#x27;,
+      continent: &#x27;Oceanía&#x27;,
+      lngLat: { lng: 131.0369, lat: -25.3444 },
+      tags: [&#x27;Australia&#x27;, &#x27;Naturaleza&#x27;, &#x27;Cultura aborigen&#x27;],
+    },
+  ]);
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'TouristPlace.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

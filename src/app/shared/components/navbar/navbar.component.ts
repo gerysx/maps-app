@@ -1,46 +1,82 @@
-import { Component, inject } from '@angular/core';
-import { routes } from '../../../app.routes';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter, map } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
-
 /**
  * Componente de navegación principal (navbar) de la aplicación.
- * 
- * Este componente muestra enlaces de navegación dinámicos basados en las rutas
- * definidas en el archivo `app.routes.ts`, y también refleja el título de la página
- * actual en base a la URL activa.
+ *
+ * Este componente renderiza un panel superior con el título de la ruta actual
+ * y un menú lateral con navegación basada en las rutas declaradas en `app.routes.ts`.
+ *
+ * También gestiona el estado reactivo del sidebar y actualiza dinámicamente el título según la ruta activa.
+ *
+ * @component
+ * @selector app-navbar
+ * @standalone
+ * @template ./navbar.component.html
+ * @imports RouterLink, RouterLinkActive, AsyncPipe
+ *
+ * @example
+ * <app-navbar></app-navbar>
+ *
+ * @remarks
+ * Este componente está diseñado para funcionar con Angular 20 y el sistema de señales.
  */
+
+import { Component, inject, signal } from '@angular/core';
+import { routes } from '../../../app.routes';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter, map } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [AsyncPipe, RouterLink],
+  imports: [AsyncPipe, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
   /**
-   * Inyección del servicio de enrutamiento de Angular.
-   * Permite acceder al historial de navegación, eventos, rutas activas, etc.
-   * 
+   * Instancia del servicio `Router` de Angular.
+   *
+   * Se utiliza para escuchar eventos de navegación (`NavigationEnd`) y acceder a la URL actual.
+   *
+   * @readonly
+   * @type {Router}
    * @see https://angular.io/api/router/Router
    */
-  router = inject(Router);
+  readonly router = inject(Router);
 
   /**
-   * Rutas visibles en el navbar.
-   * 
-   * Se construye a partir del array `routes` importado, extrayendo la ruta (`path`)
-   * y el título (`title`) de cada una, con un valor por defecto si no hay título definido.
-   * Se excluye la ruta `**` (wildcard) ya que no representa una vista navegable directa.
-   * 
+   * Estado reactivo que controla si el menú lateral (sidebar) está abierto o cerrado.
+   *
+   * @signal
+   * @type {Signal<boolean>}
+   * @default false
+   */
+  readonly sidebarOpen = signal(false);
+
+  /**
+   * Alterna el estado del menú lateral (`sidebarOpen`) entre abierto y cerrado.
+   *
+   * @method
+   */
+  toggleSidebar(): void {
+    this.sidebarOpen.update(open => !open);
+  }
+
+  /**
+   * Lista de rutas visibles en el menú de navegación.
+   *
+   * Se genera a partir de las rutas del archivo `app.routes.ts`, extrayendo solo aquellas
+   * que tienen un `path` definido (y distinto de '**') y un `title` asignado.
+   *
+   * @readonly
+   * @type {Array<{ path: string; title: string }>}
+   *
    * @example
    * [
-   *   { path: 'fullscreen', title: 'Fullscreen Map' },
-   *   { path: 'markers', title: 'Marcadores' }
+   *   { path: 'fullscreen', title: 'Explora el mundo' },
+   *   { path: 'markers', title: 'Marcadores' },
    * ]
    */
-  routes = routes
+  readonly routes = routes
     .map((route) => ({
       path: route.path,
       title: `${route.title ?? 'Mapas en Angular'}`,
@@ -48,20 +84,21 @@ export class NavbarComponent {
     .filter((route) => route.path !== '**');
 
   /**
-   * Observable que emite el título correspondiente a la ruta actual del navegador.
-   * 
-   * Se basa en la emisión del evento `NavigationEnd` del router,
-   * y luego compara la URL navegada con las rutas disponibles para obtener el `title`.
-   * Es útil para usar en la plantilla con `async` pipe.
-   * 
+   * Título de la página actual basado en la ruta activa.
+   *
+   * Este observable escucha los eventos de navegación (`NavigationEnd`) y compara la URL
+   * con las rutas registradas para obtener el título correspondiente.
+   * Puede usarse en el HTML con el pipe `async`.
+   *
+   * @readonly
+   * @type {Observable<string>}
+   *
    * @example
-   * pageTitle$ | async → "Marcadores"
+   * {{ pageTitle$ | async }} → "Sitios turísticos"
    */
-  pageTitle$ = this.router.events.pipe(
-    filter((event) => event instanceof NavigationEnd),
-    map((event) => event.url),
-    map((url) => routes.find(route => `/${route.path}` === url)?.title ?? 'Mapas')
+  readonly pageTitle$ = this.router.events.pipe(
+    filter(event => event instanceof NavigationEnd),
+    map(event => (event as NavigationEnd).url),
+    map(url => routes.find(route => `/${route.path}` === url)?.title ?? 'Mapas')
   );
-
-
 }

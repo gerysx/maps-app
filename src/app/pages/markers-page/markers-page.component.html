@@ -1,1 +1,91 @@
-<p>markers-page works!</p>,
+<!-- 
+  CONTENEDOR DEL MAPA PRINCIPAL
+  Este div se referencia con @viewChild('map') en el componente TypeScript
+  y es donde se monta la instancia de Mapbox GL.
+-->
+<div #map class="h-[60vh] sm:h-[calc(100vh-64px)]"></div>
+
+<!-- 
+  SECCIÓN DE LISTADO DE MARCADORES
+  Panel lateral que muestra los marcadores actuales (lat/lng).
+  En pantallas grandes se posiciona fija a la izquierda.
+-->
+<section
+  class="h-[40vh] sm:fixed sm:w-[260px] bg-white sm:rounded sm:top-20 sm:left-10 p-5 overflow-y-auto transition-all duration-300 scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-300"
+>
+  <!-- Título del panel -->
+  <h2 class="text-xl font-bold text-black mb-4">Marcadores</h2>
+
+  <!-- Lista dinámica de marcadores -->
+  <div class="flex flex-col gap-3">
+    @for (marker of markers(); track marker.id) {
+      <div class="w-full">
+        <!-- Tarjeta de marcador individual -->
+        <div
+          class="flex items-center justify-between gap-3 bg-gray-100 px-3 py-2 rounded shadow text-xs text-black transition-colors duration-200 hover:bg-gray-200"
+        >
+          <!-- Coordenadas del marcador -->
+          <span class="flex-1 break-words whitespace-pre-wrap leading-tight">
+            Lat: {{ marker.mapboxMarker.getLngLat().lat | number : '1.4-4' }}<br />
+            Lng: {{ marker.mapboxMarker.getLngLat().lng | number : '1.4-4' }}
+          </span>
+
+          <!-- Botón: volar al marcador -->
+          <button
+            (click)="flyToMarker(marker.mapboxMarker.getLngLat())"
+            class="hover:scale-110 transition-transform"
+            title="Ir a marcador"
+          >
+            <!-- Icono de marcador tipo 'pin' -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              [attr.fill]="marker.mapboxMarker._color"
+              viewBox="0 0 24 24"
+              stroke="black"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0.7"
+                d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 12 6 12s6-6.75 6-12c0-3.314-2.686-6-6-6z"
+              />
+              <circle cx="12" cy="8" r="2" fill="white" />
+            </svg>
+          </button>
+
+          <!-- Botón: eliminar marcador -->
+          <button
+            (click)="deleteMarker(marker)"
+            class="hover:scale-110 transition-transform"
+            title="Eliminar marcador"
+          >
+            <!-- Icono SVG de una X (bonito y moderno) -->
+            <svg
+              class="w-[28px] h-[28px] text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0.7"
+                d="M6 18 17.94 6M18 18 6.06 6"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- Caso vacío: sin marcadores aún -->
+    @empty {
+      <div class="flex justify-center items-center bg-blue-100 rounded py-3">
+        <p class="text-xs text-secondary text-center">No hay marcadores</p>
+      </div>
+    }
+  </div>
+</section>

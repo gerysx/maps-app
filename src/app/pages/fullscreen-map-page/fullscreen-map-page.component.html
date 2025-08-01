@@ -1,10 +1,18 @@
+<!-- CONTENEDOR DEL MAPA (referenciado con viewChild en el componente) -->
 <div #map></div>
 
+<!-- PANEL DE CONTROLES: ZOOM Y COORDENADAS -->
 <section id="controls">
+  <!-- ZOOM ACTUAL -->
   <h2 class="text-2xl font-bold text-black mb-2">
     Zoom
-    <small class="text-gray-500 font-normal">{{zoom() | number: '1.0-2'}}</small>
+    <!-- Valor del zoom, formateado con 0 a 2 decimales -->
+    <small class="text-gray-500 font-normal">
+      {{ zoom() | number: '1.0-2' }}
+    </small>
   </h2>
+
+  <!-- SLIDER PARA AJUSTAR EL ZOOM DEL MAPA -->
   <input
     type="range"
     min="1"
@@ -12,6 +20,21 @@
     [value]="zoom()"
     class="range range-secondary"
     (input)="zoom.set(+txtZoom.value)"
-    #txtZoom
+    #txtZoom 
   />
+   <!-- Al mover el slider, se actualiza la señal de zoom -->
+  <!-- Template reference variable usada en el input event -->
+
+  <!-- COORDENADAS ACTUALES DEL CENTRO DEL MAPA -->
+  <h2 class="text-2xl font-bold text-black mb-2">Coordenadas</h2>
+
+  <!-- Mostrar las coordenadas en formato JSON, formateadas con 4 decimales -->
+  <pre class="text-sm text-gray-500 font-normal">
+{{
+  {
+    latitude: coordinates().lat | number: '1.4-4',
+    longitude: coordinates().lng | number: '1.4-4'
+  } | json
+}}
+  </pre>
 </section>

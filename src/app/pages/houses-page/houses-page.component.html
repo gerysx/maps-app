@@ -1,1 +1,66 @@
-<p>houses-page works!</p>,
+<!-- 
+  📍 SECCIÓN DE TÍTULO PRINCIPAL
+  Contenedor centrado que muestra el encabezado y la cantidad de lugares turísticos disponibles.
+  Usa clases responsive (Tailwind + DaisyUI) y separación horizontal adaptativa.
+-->
+<section class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-bold mb-1">Interés turístico</h2>
+
+  <!-- 
+    Muestra la cantidad total de lugares desde la señal `houses()`.
+    Reactivo, se actualiza automáticamente al modificarse el array.
+  -->
+  <h3 class="text-xl text-gray-500 mb-4">
+    {{ houses().length }} lugares disponibles
+  </h3>
+</section>
+
+<!-- 
+  🗺️ SECCIÓN DE TARJETAS DE LUGARES TURÍSTICOS
+  Grid responsive con tarjetas ajustables (min. 280px).
+  Cada tarjeta incluye un mapa interactivo y la descripción del lugar.
+-->
+<section
+  class="container mx-auto px-4 sm:px-6 lg:px-8 grid gap-4"
+  style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"
+>
+  <!-- 
+    Bucle reactivo @for con señal `houses()`.
+    Cada elemento tiene un `track` por `id` para optimizar el renderizado.
+  -->
+  @for (house of houses(); track house.id; let i = $index) {
+
+    <!-- 
+      🏠 Tarjeta individual de lugar turístico.
+      Incluye un mapa pequeño y los datos descriptivos del lugar.
+    -->
+    <div class="card bg-base-100 shadow-sm rounded-t-md overflow-hidden">
+      
+      <!-- 
+        Componente hijo reutilizable que muestra el mapa de la ubicación.
+        Usa `[lngLat]` como input y `zoom` fijo en 15.
+      -->
+      <app-mini-map [lngLat]="house.lngLat" [zoom]="15" />
+
+      <!-- 
+        Contenido textual: nombre, descripción, y etiquetas del lugar.
+      -->
+      <div class="card-body">
+        <h2 class="card-title">
+          {{ house.name }}
+        </h2>
+        <p>{{ house.description }}</p>
+
+        <!-- 
+          Etiquetas o características del lugar (p. ej. "Montaña", "Patrimonio").
+          Visualmente agrupadas como badges en la parte inferior.
+        -->
+        <div class="card-actions justify-end flex-wrap gap-1 mt-2">
+          @for (tag of house.tags; track $index) {
+            <div class="badge badge-outline badge-accent">{{ tag }}</div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</section>

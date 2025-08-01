@@ -1,0 +1,728 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>maps-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">maps-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HousesPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/houses-page/houses-page.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente principal de la vista de lugares turísticos.</p>
+<p>Este componente muestra una lista de puntos turísticos organizados por continente.
+Cada tarjeta incluye un mapa en miniatura (<code>MiniMapComponent</code>) y detalles del lugar.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">{
+  path: &#39;houses&#39;,
+  component: HousesPageComponent,
+  title: &#39;Sitios turísticos&#39;
+}</code></pre></div>
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-page-component</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/MiniMapComponent.html" target="_self" >MiniMapComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./houses-page.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#houses" >houses</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="houses"></a>
+                    <span class="name">
+                        <span ><b>houses</b></span>
+                        <a href="#houses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;TouristPlace[]&gt;([
+    //  EUROPA
+    {
+      id: uuid(),
+      name: &#x27;Torre Eiffel&#x27;,
+      description: &#x27;Emblemática torre de hierro en el corazón de París.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 2.2945, lat: 48.8584 },
+      tags: [&#x27;París&#x27;, &#x27;Francia&#x27;, &#x27;Monumento&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Coliseo Romano&#x27;,
+      description: &#x27;Anfiteatro icónico de la Antigua Roma.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 12.4922, lat: 41.8902 },
+      tags: [&#x27;Italia&#x27;, &#x27;Historia&#x27;, &#x27;Roma&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Castillo de Neuschwanstein&#x27;,
+      description: &#x27;Castillo de cuento de hadas en los Alpes bávaros que inspiró a Disney.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 10.7498, lat: 47.5576 },
+      tags: [&#x27;Alemania&#x27;, &#x27;Castillo&#x27;, &#x27;Baviera&#x27;],
+    },
+
+    //  AMÉRICA
+    {
+      id: uuid(),
+      name: &#x27;Machu Picchu&#x27;,
+      description: &#x27;Ciudadela inca escondida en los Andes peruanos.&#x27;,
+      continent: &#x27;América&#x27;,
+      lngLat: { lng: -72.544963, lat: -13.163141 },
+      tags: [&#x27;Perú&#x27;, &#x27;Incas&#x27;, &#x27;Montaña&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Estatua de la Libertad&#x27;,
+      description: &#x27;Símbolo de libertad en Nueva York.&#x27;,
+      continent: &#x27;América&#x27;,
+      lngLat: { lng: -74.0445, lat: 40.6892 },
+      tags: [&#x27;EEUU&#x27;, &#x27;NYC&#x27;, &#x27;Icono&#x27;],
+    },
+
+    //  ASIA
+    {
+      id: uuid(),
+      name: &#x27;Gran Muralla China&#x27;,
+      description: &#x27;Estructura militar de miles de kilómetros.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 117.236, lat: 40.6769 },
+      tags: [&#x27;China&#x27;, &#x27;Muralla&#x27;, &#x27;Historia&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Templo de Angkor Wat&#x27;,
+      description: &#x27;Templo monumental en Camboya.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 103.866986, lat: 13.4125 },
+      tags: [&#x27;Camboya&#x27;, &#x27;Religión&#x27;, &#x27;Arquitectura&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Taj Mahal&#x27;,
+      description: &#x27;Mausoleo de mármol blanco símbolo del amor eterno, ubicado en Agra.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 78.0421, lat: 27.1751 },
+      tags: [&#x27;India&#x27;, &#x27;Patrimonio&#x27;, &#x27;Arquitectura&#x27;],
+    },
+
+    //  ÁFRICA
+    {
+      id: uuid(),
+      name: &#x27;Pirámides de Giza&#x27;,
+      description: &#x27;Maravilla del mundo antiguo en Egipto.&#x27;,
+      continent: &#x27;África&#x27;,
+      lngLat: { lng: 31.1342, lat: 29.9792 },
+      tags: [&#x27;Egipto&#x27;, &#x27;Faraones&#x27;, &#x27;Antigüedad&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Cataratas Victoria&#x27;,
+      description: &#x27;Impresionantes cataratas entre Zambia y Zimbabue.&#x27;,
+      continent: &#x27;África&#x27;,
+      lngLat: { lng: 25.8572, lat: -17.9243 },
+      tags: [&#x27;Naturaleza&#x27;, &#x27;África&#x27;, &#x27;Zambeze&#x27;],
+    },
+
+    //  OCEANÍA
+    {
+      id: uuid(),
+      name: &#x27;Ópera de Sídney&#x27;,
+      description: &#x27;Edificio icónico a orillas del puerto.&#x27;,
+      continent: &#x27;Oceanía&#x27;,
+      lngLat: { lng: 151.2153, lat: -33.8568 },
+      tags: [&#x27;Australia&#x27;, &#x27;Arquitectura&#x27;, &#x27;Sídney&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Uluru (Ayers Rock)&#x27;,
+      description: &#x27;Monolito sagrado de los aborígenes australianos en pleno desierto rojo.&#x27;,
+      continent: &#x27;Oceanía&#x27;,
+      lngLat: { lng: 131.0369, lat: -25.3444 },
+      tags: [&#x27;Australia&#x27;, &#x27;Naturaleza&#x27;, &#x27;Cultura aborigen&#x27;],
+    },
+  ])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/houses-page/houses-page.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado reactivo que contiene la lista de lugares turísticos.</p>
+<p>Inicializado con una colección diversa de monumentos y sitios
+representativos de los cinco continentes.</p>
+<p>Utiliza <code>uuid</code> para asignar identificadores únicos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, signal } from &#x27;@angular/core&#x27;;
+import { v4 as uuid } from &#x27;uuid&#x27;;
+import { MiniMapComponent } from &#x27;../../maps/components/mini-map/mini-map.component&#x27;;
+
+/**
+ * Interfaz que representa un punto de interés turístico.
+ * 
+ * @property id - Identificador único (UUID).
+ * @property name - Nombre del lugar turístico.
+ * @property description - Descripción breve del sitio.
+ * @property continent - Continente al que pertenece el lugar.
+ * @property lngLat - Coordenadas geográficas (longitud y latitud).
+ * @property tags - Lista de etiquetas temáticas o geográficas.
+ */
+interface TouristPlace {
+  id: string;
+  name: string;
+  description: string;
+  continent: &#x27;Europa&#x27; | &#x27;Asia&#x27; | &#x27;África&#x27; | &#x27;América&#x27; | &#x27;Oceanía&#x27;;
+  lngLat: { lng: number; lat: number };
+  tags: string[];
+}
+
+/**
+ * Componente principal de la vista de lugares turísticos.
+ *
+ * Este componente muestra una lista de puntos turísticos organizados por continente.
+ * Cada tarjeta incluye un mapa en miniatura (&#x60;MiniMapComponent&#x60;) y detalles del lugar.
+ *
+ * @example Uso del componente en rutas:
+ * {
+ *   path: &#x27;houses&#x27;,
+ *   component: HousesPageComponent,
+ *   title: &#x27;Sitios turísticos&#x27;
+ * }
+ */
+@Component({
+  selector: &#x27;app-page-component&#x27;,
+  standalone: true,
+  imports: [MiniMapComponent],
+  templateUrl: &#x27;./houses-page.component.html&#x27;,
+})
+export class HousesPageComponent {
+  /**
+   * Estado reactivo que contiene la lista de lugares turísticos.
+   * 
+   * Inicializado con una colección diversa de monumentos y sitios
+   * representativos de los cinco continentes.
+   * 
+   * Utiliza &#x60;uuid&#x60; para asignar identificadores únicos.
+   */
+  houses &#x3D; signal&lt;TouristPlace[]&gt;([
+    //  EUROPA
+    {
+      id: uuid(),
+      name: &#x27;Torre Eiffel&#x27;,
+      description: &#x27;Emblemática torre de hierro en el corazón de París.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 2.2945, lat: 48.8584 },
+      tags: [&#x27;París&#x27;, &#x27;Francia&#x27;, &#x27;Monumento&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Coliseo Romano&#x27;,
+      description: &#x27;Anfiteatro icónico de la Antigua Roma.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 12.4922, lat: 41.8902 },
+      tags: [&#x27;Italia&#x27;, &#x27;Historia&#x27;, &#x27;Roma&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Castillo de Neuschwanstein&#x27;,
+      description: &#x27;Castillo de cuento de hadas en los Alpes bávaros que inspiró a Disney.&#x27;,
+      continent: &#x27;Europa&#x27;,
+      lngLat: { lng: 10.7498, lat: 47.5576 },
+      tags: [&#x27;Alemania&#x27;, &#x27;Castillo&#x27;, &#x27;Baviera&#x27;],
+    },
+
+    //  AMÉRICA
+    {
+      id: uuid(),
+      name: &#x27;Machu Picchu&#x27;,
+      description: &#x27;Ciudadela inca escondida en los Andes peruanos.&#x27;,
+      continent: &#x27;América&#x27;,
+      lngLat: { lng: -72.544963, lat: -13.163141 },
+      tags: [&#x27;Perú&#x27;, &#x27;Incas&#x27;, &#x27;Montaña&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Estatua de la Libertad&#x27;,
+      description: &#x27;Símbolo de libertad en Nueva York.&#x27;,
+      continent: &#x27;América&#x27;,
+      lngLat: { lng: -74.0445, lat: 40.6892 },
+      tags: [&#x27;EEUU&#x27;, &#x27;NYC&#x27;, &#x27;Icono&#x27;],
+    },
+
+    //  ASIA
+    {
+      id: uuid(),
+      name: &#x27;Gran Muralla China&#x27;,
+      description: &#x27;Estructura militar de miles de kilómetros.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 117.236, lat: 40.6769 },
+      tags: [&#x27;China&#x27;, &#x27;Muralla&#x27;, &#x27;Historia&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Templo de Angkor Wat&#x27;,
+      description: &#x27;Templo monumental en Camboya.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 103.866986, lat: 13.4125 },
+      tags: [&#x27;Camboya&#x27;, &#x27;Religión&#x27;, &#x27;Arquitectura&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Taj Mahal&#x27;,
+      description: &#x27;Mausoleo de mármol blanco símbolo del amor eterno, ubicado en Agra.&#x27;,
+      continent: &#x27;Asia&#x27;,
+      lngLat: { lng: 78.0421, lat: 27.1751 },
+      tags: [&#x27;India&#x27;, &#x27;Patrimonio&#x27;, &#x27;Arquitectura&#x27;],
+    },
+
+    //  ÁFRICA
+    {
+      id: uuid(),
+      name: &#x27;Pirámides de Giza&#x27;,
+      description: &#x27;Maravilla del mundo antiguo en Egipto.&#x27;,
+      continent: &#x27;África&#x27;,
+      lngLat: { lng: 31.1342, lat: 29.9792 },
+      tags: [&#x27;Egipto&#x27;, &#x27;Faraones&#x27;, &#x27;Antigüedad&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Cataratas Victoria&#x27;,
+      description: &#x27;Impresionantes cataratas entre Zambia y Zimbabue.&#x27;,
+      continent: &#x27;África&#x27;,
+      lngLat: { lng: 25.8572, lat: -17.9243 },
+      tags: [&#x27;Naturaleza&#x27;, &#x27;África&#x27;, &#x27;Zambeze&#x27;],
+    },
+
+    //  OCEANÍA
+    {
+      id: uuid(),
+      name: &#x27;Ópera de Sídney&#x27;,
+      description: &#x27;Edificio icónico a orillas del puerto.&#x27;,
+      continent: &#x27;Oceanía&#x27;,
+      lngLat: { lng: 151.2153, lat: -33.8568 },
+      tags: [&#x27;Australia&#x27;, &#x27;Arquitectura&#x27;, &#x27;Sídney&#x27;],
+    },
+    {
+      id: uuid(),
+      name: &#x27;Uluru (Ayers Rock)&#x27;,
+      description: &#x27;Monolito sagrado de los aborígenes australianos en pleno desierto rojo.&#x27;,
+      continent: &#x27;Oceanía&#x27;,
+      lngLat: { lng: 131.0369, lat: -25.3444 },
+      tags: [&#x27;Australia&#x27;, &#x27;Naturaleza&#x27;, &#x27;Cultura aborigen&#x27;],
+    },
+  ]);
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- 
+  📍 SECCIÓN DE TÍTULO PRINCIPAL
+  Contenedor centrado que muestra el encabezado y la cantidad de lugares turísticos disponibles.
+  Usa clases responsive (Tailwind + DaisyUI) y separación horizontal adaptativa.
+--&gt;
+&lt;section class&#x3D;&quot;container mx-auto px-4 sm:px-6 lg:px-8&quot;&gt;
+  &lt;h2 class&#x3D;&quot;text-3xl font-bold mb-1&quot;&gt;Interés turístico&lt;/h2&gt;
+
+  &lt;!-- 
+    Muestra la cantidad total de lugares desde la señal &#x60;houses()&#x60;.
+    Reactivo, se actualiza automáticamente al modificarse el array.
+  --&gt;
+  &lt;h3 class&#x3D;&quot;text-xl text-gray-500 mb-4&quot;&gt;
+    {{ houses().length }} lugares disponibles
+  &lt;/h3&gt;
+&lt;/section&gt;
+
+&lt;!-- 
+  🗺️ SECCIÓN DE TARJETAS DE LUGARES TURÍSTICOS
+  Grid responsive con tarjetas ajustables (min. 280px).
+  Cada tarjeta incluye un mapa interactivo y la descripción del lugar.
+--&gt;
+&lt;section
+  class&#x3D;&quot;container mx-auto px-4 sm:px-6 lg:px-8 grid gap-4&quot;
+  style&#x3D;&quot;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));&quot;
+&gt;
+  &lt;!-- 
+    Bucle reactivo @for con señal &#x60;houses()&#x60;.
+    Cada elemento tiene un &#x60;track&#x60; por &#x60;id&#x60; para optimizar el renderizado.
+  --&gt;
+  @for (house of houses(); track house.id; let i &#x3D; $index) {
+
+    &lt;!-- 
+      🏠 Tarjeta individual de lugar turístico.
+      Incluye un mapa pequeño y los datos descriptivos del lugar.
+    --&gt;
+    &lt;div class&#x3D;&quot;card bg-base-100 shadow-sm rounded-t-md overflow-hidden&quot;&gt;
+      
+      &lt;!-- 
+        Componente hijo reutilizable que muestra el mapa de la ubicación.
+        Usa &#x60;[lngLat]&#x60; como input y &#x60;zoom&#x60; fijo en 15.
+      --&gt;
+      &lt;app-mini-map [lngLat]&#x3D;&quot;house.lngLat&quot; [zoom]&#x3D;&quot;15&quot; /&gt;
+
+      &lt;!-- 
+        Contenido textual: nombre, descripción, y etiquetas del lugar.
+      --&gt;
+      &lt;div class&#x3D;&quot;card-body&quot;&gt;
+        &lt;h2 class&#x3D;&quot;card-title&quot;&gt;
+          {{ house.name }}
+        &lt;/h2&gt;
+        &lt;p&gt;{{ house.description }}&lt;/p&gt;
+
+        &lt;!-- 
+          Etiquetas o características del lugar (p. ej. &quot;Montaña&quot;, &quot;Patrimonio&quot;).
+          Visualmente agrupadas como badges en la parte inferior.
+        --&gt;
+        &lt;div class&#x3D;&quot;card-actions justify-end flex-wrap gap-1 mt-2&quot;&gt;
+          @for (tag of house.tags; track $index) {
+            &lt;div class&#x3D;&quot;badge badge-outline badge-accent&quot;&gt;{{ tag }}&lt;/div&gt;
+          }
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  }
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--   📍 SECCIÓN DE TÍTULO PRINCIPAL  Contenedor centrado que muestra el encabezado y la cantidad de lugares turísticos disponibles.  Usa clases responsive (Tailwind + DaisyUI) y separación horizontal adaptativa.--><section class="container mx-auto px-4 sm:px-6 lg:px-8">  <h2 class="text-3xl font-bold mb-1">Interés turístico</h2>  <!--     Muestra la cantidad total de lugares desde la señal `houses()`.    Reactivo, se actualiza automáticamente al modificarse el array.  -->  <h3 class="text-xl text-gray-500 mb-4">    {{ houses().length }} lugares disponibles  </h3></section><!--   🗺️ SECCIÓN DE TARJETAS DE LUGARES TURÍSTICOS  Grid responsive con tarjetas ajustables (min. 280px).  Cada tarjeta incluye un mapa interactivo y la descripción del lugar.--><section  class="container mx-auto px-4 sm:px-6 lg:px-8 grid gap-4"  style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">  <!--     Bucle reactivo @for con señal `houses()`.    Cada elemento tiene un `track` por `id` para optimizar el renderizado.  -->  @for (house of houses(); track house.id; let i = $index) {    <!--       🏠 Tarjeta individual de lugar turístico.      Incluye un mapa pequeño y los datos descriptivos del lugar.    -->    <div class="card bg-base-100 shadow-sm rounded-t-md overflow-hidden">            <!--         Componente hijo reutilizable que muestra el mapa de la ubicación.        Usa `[lngLat]` como input y `zoom` fijo en 15.      -->      <app-mini-map [lngLat]="house.lngLat" [zoom]="15" />      <!--         Contenido textual: nombre, descripción, y etiquetas del lugar.      -->      <div class="card-body">        <h2 class="card-title">          {{ house.name }}        </h2>        <p>{{ house.description }}</p>        <!--           Etiquetas o características del lugar (p. ej. "Montaña", "Patrimonio").          Visualmente agrupadas como badges en la parte inferior.        -->        <div class="card-actions justify-end flex-wrap gap-1 mt-2">          @for (tag of house.tags; track $index) {            <div class="badge badge-outline badge-accent">{{ tag }}</div>          }        </div>      </div>    </div>  }</section></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'FullscreenMapPageComponent', 'selector': 'app-fullscreen-map-page'},{'name': 'HousesPageComponent', 'selector': 'app-page-component'},{'name': 'MarkersPageComponent', 'selector': 'app-markers-page'},{'name': 'MiniMapComponent', 'selector': 'app-mini-map'},{'name': 'NavbarComponent', 'selector': 'app-navbar'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HousesPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HousesPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

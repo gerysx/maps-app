@@ -1,0 +1,1063 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>maps-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">maps-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MarkersPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/markers-page/markers-page.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>AfterViewInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-markers-page</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>DecimalPipe</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./markers-page.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#divElement" >divElement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#map" >map</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#markers" >markers</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteMarker" >deleteMarker</a>
+                            </li>
+                            <li>
+                                <a href="#flyToMarker" >flyToMarker</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mapClick" >mapClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mapListeners" >mapListeners</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteMarker"></a>
+                    <span class="name">
+                        <span ><b>deleteMarker</b></span>
+                        <a href="#deleteMarker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteMarker(marker: <a href="../interfaces/Marker.html" target="_self">Marker</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un marcador del mapa y del estado reactivo.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>marker</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Marker.html" target="_self" >Marker</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El marcador a eliminar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flyToMarker"></a>
+                    <span class="name">
+                        <span ><b>flyToMarker</b></span>
+                        <a href="#flyToMarker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>flyToMarker(lngLat: LngLatLike)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Centra la vista del mapa sobre un marcador dado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>lngLat</td>
+                                            <td>
+                                                        <code>LngLatLike</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Coordenadas <code>LngLatLike</code> del marcador.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapClick"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>mapClick</b></span>
+                        <a href="#mapClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>mapClick(event: mapboxgl.MapMouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Acción ejecutada cuando el usuario hace clic en el mapa.</p>
+<p>Crea un marcador nuevo con color aleatorio, lo agrega al mapa y al estado reactivo.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>mapboxgl.MapMouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Evento de tipo <code>MapMouseEvent</code> que contiene las coordenadas clicadas.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapListeners"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>mapListeners</b></span>
+                        <a href="#mapListeners"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>mapListeners(map: mapboxgl.Map)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Añade listeners al mapa de Mapbox GL.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>map</td>
+                                            <td>
+                                                        <code>mapboxgl.Map</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Instancia de <code>mapboxgl.Map</code> ya inicializada.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Ciclo de vida <code>ngAfterViewInit</code>.
+Se ejecuta una vez el componente y el DOM están completamente inicializados.</p>
+<p>Inicializa el mapa con Mapbox GL y establece los listeners.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="divElement"></a>
+                    <span class="name">
+                        <span ><b>divElement</b></span>
+                        <a href="#divElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>viewChild&lt;ElementRef&gt;(&#x27;map&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Referencia al elemento DOM que contendrá el mapa.
+Se obtiene con <code>@viewChild</code> a través del nombre <code>&#39;map&#39;</code>.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="map"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>map</b></span>
+                        <a href="#map"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;mapboxgl.Map | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Señal reactiva que contiene la instancia actual del mapa de Mapbox.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="markers"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>markers</b></span>
+                        <a href="#markers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Marker[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/pages/markers-page/markers-page.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista reactiva de todos los marcadores creados por el usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  signal,
+  viewChild,
+} from &#x27;@angular/core&#x27;;
+import { environment } from &#x27;../../../environments/environment&#x27;;
+import mapboxgl, { LngLatLike } from &#x27;mapbox-gl&#x27;;
+import { v4 as UUIDv4 } from &#x27;uuid&#x27;;
+import { DecimalPipe } from &#x27;@angular/common&#x27;;
+
+// Configuración de la clave de acceso a Mapbox
+mapboxgl.accessToken &#x3D; environment.mapboxkey;
+
+/**
+ * Interfaz que representa un marcador en el mapa.
+ */
+interface Marker {
+  /** Identificador único del marcador (UUID v4) */
+  id: string;
+
+  /** Instancia del marcador de Mapbox GL */
+  mapboxMarker: mapboxgl.Marker;
+}
+
+@Component({
+  selector: &#x27;app-markers-page&#x27;,
+  imports: [DecimalPipe],
+  templateUrl: &#x27;./markers-page.component.html&#x27;,
+})
+export class MarkersPageComponent implements AfterViewInit {
+  /**
+   * Referencia al elemento DOM que contendrá el mapa.
+   * Se obtiene con &#x60;@viewChild&#x60; a través del nombre &#x60;&#x27;map&#x27;&#x60;.
+   */
+  divElement &#x3D; viewChild&lt;ElementRef&gt;(&#x27;map&#x27;);
+
+  /**
+   * Señal reactiva que contiene la instancia actual del mapa de Mapbox.
+   */
+  readonly map &#x3D; signal&lt;mapboxgl.Map | null&gt;(null);
+
+  /**
+   * Lista reactiva de todos los marcadores creados por el usuario.
+   */
+  readonly markers &#x3D; signal&lt;Marker[]&gt;([]);
+
+  /**
+   * Ciclo de vida &#x60;ngAfterViewInit&#x60;.
+   * Se ejecuta una vez el componente y el DOM están completamente inicializados.
+   *
+   * Inicializa el mapa con Mapbox GL y establece los listeners.
+   */
+  async ngAfterViewInit(): Promise&lt;void&gt; {
+    if (!this.divElement()?.nativeElement) return;
+
+    // Evita errores de renderizado antes de que el DOM esté 100% listo
+    await new Promise((resolve) &#x3D;&gt; setTimeout(resolve, 80));
+
+    const element &#x3D; this.divElement()!.nativeElement;
+
+    const map &#x3D; new mapboxgl.Map({
+      container: element,
+      style: &#x27;mapbox://styles/mapbox/streets-v12&#x27;,
+      center: [-3.7038, 40.4168], // Madrid
+      zoom: 14,
+    });
+
+    this.mapListeners(map);
+  }
+
+  /**
+   * Añade listeners al mapa de Mapbox GL.
+   *
+   * @param map Instancia de &#x60;mapboxgl.Map&#x60; ya inicializada.
+   */
+  private mapListeners(map: mapboxgl.Map): void {
+    map.on(&#x27;click&#x27;, (event) &#x3D;&gt; this.mapClick(event));
+    this.map.set(map);
+  }
+
+  /**
+   * Acción ejecutada cuando el usuario hace clic en el mapa.
+   *
+   * Crea un marcador nuevo con color aleatorio, lo agrega al mapa y al estado reactivo.
+   *
+   * @param event Evento de tipo &#x60;MapMouseEvent&#x60; que contiene las coordenadas clicadas.
+   */
+  private mapClick(event: mapboxgl.MapMouseEvent): void {
+    if (!this.map()) return;
+
+    const map &#x3D; this.map()!;
+    const coords &#x3D; event.lngLat;
+
+    // Generación de color aleatorio hex
+    const color &#x3D; &#x27;#xxxxxx&#x27;.replace(/x/g, () &#x3D;&gt;
+      ((Math.random() * 16) | 0).toString(16)
+    );
+
+    const mapboxMarker &#x3D; new mapboxgl.Marker({ color })
+      .setLngLat(coords)
+      .addTo(map);
+
+    const newMarker: Marker &#x3D; {
+      id: UUIDv4(),
+      mapboxMarker,
+    };
+
+    this.markers.update((markers) &#x3D;&gt; [newMarker, ...markers]);
+  }
+
+  /**
+   * Centra la vista del mapa sobre un marcador dado.
+   *
+   * @param lngLat Coordenadas &#x60;LngLatLike&#x60; del marcador.
+   */
+  flyToMarker(lngLat: LngLatLike): void {
+    if (!this.map()) return;
+
+    this.map()!.flyTo({ center: lngLat });
+  }
+
+  /**
+   * Elimina un marcador del mapa y del estado reactivo.
+   *
+   * @param marker El marcador a eliminar.
+   */
+  deleteMarker(marker: Marker): void {
+    if (!this.map()) return;
+
+    marker.mapboxMarker.remove();
+
+    this.markers.set(
+      this.markers().filter((m) &#x3D;&gt; m.id !&#x3D;&#x3D; marker.id)
+    );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- 
+  CONTENEDOR DEL MAPA PRINCIPAL
+  Este div se referencia con @viewChild(&#x27;map&#x27;) en el componente TypeScript
+  y es donde se monta la instancia de Mapbox GL.
+--&gt;
+&lt;div #map class&#x3D;&quot;h-[60vh] sm:h-[calc(100vh-64px)]&quot;&gt;&lt;/div&gt;
+
+&lt;!-- 
+  SECCIÓN DE LISTADO DE MARCADORES
+  Panel lateral que muestra los marcadores actuales (lat/lng).
+  En pantallas grandes se posiciona fija a la izquierda.
+--&gt;
+&lt;section
+  class&#x3D;&quot;h-[40vh] sm:fixed sm:w-[260px] bg-white sm:rounded sm:top-20 sm:left-10 p-5 overflow-y-auto transition-all duration-300 scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-300&quot;
+&gt;
+  &lt;!-- Título del panel --&gt;
+  &lt;h2 class&#x3D;&quot;text-xl font-bold text-black mb-4&quot;&gt;Marcadores&lt;/h2&gt;
+
+  &lt;!-- Lista dinámica de marcadores --&gt;
+  &lt;div class&#x3D;&quot;flex flex-col gap-3&quot;&gt;
+    @for (marker of markers(); track marker.id) {
+      &lt;div class&#x3D;&quot;w-full&quot;&gt;
+        &lt;!-- Tarjeta de marcador individual --&gt;
+        &lt;div
+          class&#x3D;&quot;flex items-center justify-between gap-3 bg-gray-100 px-3 py-2 rounded shadow text-xs text-black transition-colors duration-200 hover:bg-gray-200&quot;
+        &gt;
+          &lt;!-- Coordenadas del marcador --&gt;
+          &lt;span class&#x3D;&quot;flex-1 break-words whitespace-pre-wrap leading-tight&quot;&gt;
+            Lat: {{ marker.mapboxMarker.getLngLat().lat | number : &#x27;1.4-4&#x27; }}&lt;br /&gt;
+            Lng: {{ marker.mapboxMarker.getLngLat().lng | number : &#x27;1.4-4&#x27; }}
+          &lt;/span&gt;
+
+          &lt;!-- Botón: volar al marcador --&gt;
+          &lt;button
+            (click)&#x3D;&quot;flyToMarker(marker.mapboxMarker.getLngLat())&quot;
+            class&#x3D;&quot;hover:scale-110 transition-transform&quot;
+            title&#x3D;&quot;Ir a marcador&quot;
+          &gt;
+            &lt;!-- Icono de marcador tipo &#x27;pin&#x27; --&gt;
+            &lt;svg
+              xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
+              [attr.fill]&#x3D;&quot;marker.mapboxMarker._color&quot;
+              viewBox&#x3D;&quot;0 0 24 24&quot;
+              stroke&#x3D;&quot;black&quot;
+              class&#x3D;&quot;w-6 h-6&quot;
+            &gt;
+              &lt;path
+                stroke-linecap&#x3D;&quot;round&quot;
+                stroke-linejoin&#x3D;&quot;round&quot;
+                stroke-width&#x3D;&quot;0.7&quot;
+                d&#x3D;&quot;M12 2C8.686 2 6 4.686 6 8c0 5.25 6 12 6 12s6-6.75 6-12c0-3.314-2.686-6-6-6z&quot;
+              /&gt;
+              &lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;8&quot; r&#x3D;&quot;2&quot; fill&#x3D;&quot;white&quot; /&gt;
+            &lt;/svg&gt;
+          &lt;/button&gt;
+
+          &lt;!-- Botón: eliminar marcador --&gt;
+          &lt;button
+            (click)&#x3D;&quot;deleteMarker(marker)&quot;
+            class&#x3D;&quot;hover:scale-110 transition-transform&quot;
+            title&#x3D;&quot;Eliminar marcador&quot;
+          &gt;
+            &lt;!-- Icono SVG de una X (bonito y moderno) --&gt;
+            &lt;svg
+              class&#x3D;&quot;w-[28px] h-[28px] text-gray-800 dark:text-white&quot;
+              aria-hidden&#x3D;&quot;true&quot;
+              xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
+              fill&#x3D;&quot;none&quot;
+              viewBox&#x3D;&quot;0 0 24 24&quot;
+            &gt;
+              &lt;path
+                stroke&#x3D;&quot;currentColor&quot;
+                stroke-linecap&#x3D;&quot;round&quot;
+                stroke-linejoin&#x3D;&quot;round&quot;
+                stroke-width&#x3D;&quot;0.7&quot;
+                d&#x3D;&quot;M6 18 17.94 6M18 18 6.06 6&quot;
+              /&gt;
+            &lt;/svg&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    }
+
+    &lt;!-- Caso vacío: sin marcadores aún --&gt;
+    @empty {
+      &lt;div class&#x3D;&quot;flex justify-center items-center bg-blue-100 rounded py-3&quot;&gt;
+        &lt;p class&#x3D;&quot;text-xs text-secondary text-center&quot;&gt;No hay marcadores&lt;/p&gt;
+      &lt;/div&gt;
+    }
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--   CONTENEDOR DEL MAPA PRINCIPAL  Este div se referencia con @viewChild(\'map\') en el componente TypeScript  y es donde se monta la instancia de Mapbox GL.--><div #map class="h-[60vh] sm:h-[calc(100vh-64px)]"></div><!--   SECCIÓN DE LISTADO DE MARCADORES  Panel lateral que muestra los marcadores actuales (lat/lng).  En pantallas grandes se posiciona fija a la izquierda.--><section  class="h-[40vh] sm:fixed sm:w-[260px] bg-white sm:rounded sm:top-20 sm:left-10 p-5 overflow-y-auto transition-all duration-300 scrollbar-thin scrollbar-thumb-primary scrollbar-track-base-300">  <!-- Título del panel -->  <h2 class="text-xl font-bold text-black mb-4">Marcadores</h2>  <!-- Lista dinámica de marcadores -->  <div class="flex flex-col gap-3">    @for (marker of markers(); track marker.id) {      <div class="w-full">        <!-- Tarjeta de marcador individual -->        <div          class="flex items-center justify-between gap-3 bg-gray-100 px-3 py-2 rounded shadow text-xs text-black transition-colors duration-200 hover:bg-gray-200"        >          <!-- Coordenadas del marcador -->          <span class="flex-1 break-words whitespace-pre-wrap leading-tight">            Lat: {{ marker.mapboxMarker.getLngLat().lat | number : \'1.4-4\' }}<br />            Lng: {{ marker.mapboxMarker.getLngLat().lng | number : \'1.4-4\' }}          </span>          <!-- Botón: volar al marcador -->          <button            (click)="flyToMarker(marker.mapboxMarker.getLngLat())"            class="hover:scale-110 transition-transform"            title="Ir a marcador"          >            <!-- Icono de marcador tipo \'pin\' -->            <svg              xmlns="http://www.w3.org/2000/svg"              [attr.fill]="marker.mapboxMarker._color"              viewBox="0 0 24 24"              stroke="black"              class="w-6 h-6"            >              <path                stroke-linecap="round"                stroke-linejoin="round"                stroke-width="0.7"                d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 12 6 12s6-6.75 6-12c0-3.314-2.686-6-6-6z"              />              <circle cx="12" cy="8" r="2" fill="white" />            </svg>          </button>          <!-- Botón: eliminar marcador -->          <button            (click)="deleteMarker(marker)"            class="hover:scale-110 transition-transform"            title="Eliminar marcador"          >            <!-- Icono SVG de una X (bonito y moderno) -->            <svg              class="w-[28px] h-[28px] text-gray-800 dark:text-white"              aria-hidden="true"              xmlns="http://www.w3.org/2000/svg"              fill="none"              viewBox="0 0 24 24"            >              <path                stroke="currentColor"                stroke-linecap="round"                stroke-linejoin="round"                stroke-width="0.7"                d="M6 18 17.94 6M18 18 6.06 6"              />            </svg>          </button>        </div>      </div>    }    <!-- Caso vacío: sin marcadores aún -->    @empty {      <div class="flex justify-center items-center bg-blue-100 rounded py-3">        <p class="text-xs text-secondary text-center">No hay marcadores</p>      </div>    }  </div></section></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'FullscreenMapPageComponent', 'selector': 'app-fullscreen-map-page'},{'name': 'HousesPageComponent', 'selector': 'app-page-component'},{'name': 'MarkersPageComponent', 'selector': 'app-markers-page'},{'name': 'MiniMapComponent', 'selector': 'app-mini-map'},{'name': 'NavbarComponent', 'selector': 'app-navbar'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MarkersPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MarkersPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
